@@ -24,6 +24,7 @@ public class ActionClasses {
 //        Thread.sleep(2000);
 //    }
     public static void main(String[] args) throws InterruptedException {
+       // System.out.println(AnnotationXyz.a);
         WebDriver driver = new ChromeDriver();
         driver.manage().window().maximize();
         driver.get("https://ceotelangana.nic.in/");

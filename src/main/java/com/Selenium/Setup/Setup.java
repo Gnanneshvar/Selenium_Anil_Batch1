@@ -1,15 +1,15 @@
-package com.Seleium.SampleCodes;
+package com.Selenium.Setup;
 
-import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.firefox.FirefoxDriver;
-import org.openqa.selenium.manager.SeleniumManager;
 
 public class Setup {
-    public static void launchBrowser() {
-        WebDriver driver = new ChromeDriver();
+
+    public static WebDriver driver;
+    public static void launchBrowser(String url) {
+        driver = new ChromeDriver();
         driver.manage().window().maximize();
+        driver.get(url);
 
         //driver.quit();
 
