@@ -36,6 +36,9 @@ public class LoginPage extends Setup {
     {
 //        Resusables.type(userName,username);
 //        Resusables.type(password,Password);
+        WebElement user = Resusables.getWebElement(userName);
+        WebElement pass = Resusables.getWebElement(password);
+        WebElement sign = Resusables.getWebElement(loginButton);
         Resusables.enterText(Resusables.getWebElement(userName),username);
         Resusables.enterText(Resusables.getWebElement(password),Password);
         Resusables.click(Resusables.getWebElement(loginButton));

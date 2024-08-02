@@ -2,18 +2,35 @@ package com.Selenium.Setup;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.edge.EdgeDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.ie.InternetExplorerDriver;
+import org.openqa.selenium.safari.SafariDriver;
 
 public class Setup {
 
     public static WebDriver driver;
+    public static String browser="";
     public static void launchBrowser(String url) {
-        driver = new ChromeDriver();
-        driver.manage().window().maximize();
+        switch (browser.toLowerCase()) {
+            case "chrome":
+                driver = new ChromeDriver();
+                break;
+            case "firefox":
+                driver = new FirefoxDriver();
+                break;
+            case "edge":
+                driver = new EdgeDriver();
+                break;
+            case "ie":
+                driver = new InternetExplorerDriver();
+                break;
+            default:
+                driver = new SafariDriver();
+        }
         driver.get(url);
-
+        driver.manage().window().maximize();
         //driver.quit();
-
-
         // Locators in selenium
         // id
         // name
