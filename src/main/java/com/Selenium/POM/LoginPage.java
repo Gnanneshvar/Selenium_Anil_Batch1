@@ -8,7 +8,7 @@ import org.openqa.selenium.WebElement;
 public class LoginPage extends Setup {
     // WebDriver driver = new ChromeDriver();
     // driver.findElement(By.id(""))
-    public static By userName = By.name("email");
+    public static By userName = By.name("email1");
     public static By password = By.name("pass");
     public static By loginButton = By.id("loginbutton");
 
@@ -32,15 +32,14 @@ public class LoginPage extends Setup {
      * @param Password
      */
 
-    public static void fnLogin(String username, String Password)
-    {
+    public static void fnLogin(String username, String Password) {
 //        Resusables.type(userName,username);
 //        Resusables.type(password,Password);
         WebElement user = Resusables.getWebElement(userName);
         WebElement pass = Resusables.getWebElement(password);
         WebElement sign = Resusables.getWebElement(loginButton);
-        Resusables.enterText(Resusables.getWebElement(userName),username);
-        Resusables.enterText(Resusables.getWebElement(password),Password);
+        Resusables.enterText(Resusables.getWebElement(userName),username,"UserName");
+        Resusables.enterText(Resusables.getWebElement(password),Password,"Password Field");
         Resusables.click(Resusables.getWebElement(loginButton));
 //        Resusables.getWebElement(userName).sendKeys(username);
 //        Resusables.getWebElement(password).sendKeys(Password);

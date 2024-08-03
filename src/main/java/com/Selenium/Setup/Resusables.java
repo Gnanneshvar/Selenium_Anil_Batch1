@@ -29,11 +29,17 @@ public class Resusables extends Setup {
      * @param webElement
      * @param textToEnter
      */
-    public static void enterText(WebElement webElement,String textToEnter)
+    public static void enterText(WebElement webElement,String textToEnter,String webElementName)
     {
-        webElement.click();
-        webElement.clear();
-        webElement.sendKeys(textToEnter);
+        try {
+            webElement.click();
+            webElement.clear();
+            webElement.sendKeys(textToEnter);
+        }
+        catch(Exception e)
+        {
+            System.out.println("Not able to enter the text for WebElement "+webElementName + " Error as::"+e.getMessage());
+        }
     }
 
     public static void type(By byvVaribale,String textToType)

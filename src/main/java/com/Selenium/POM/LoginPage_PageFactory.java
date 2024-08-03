@@ -9,7 +9,7 @@ import org.openqa.selenium.support.PageFactory;
 
 public class LoginPage_PageFactory extends Setup {
 
-    @FindBy(name="email")
+    @FindBy(name="email1")
     private WebElement userName;
     // WebElement web = driver.findElement(By.name(""))
 
@@ -24,8 +24,8 @@ public class LoginPage_PageFactory extends Setup {
     }
 
     public void fnLogin(String email, String Password) {
-        Resusables.enterText(userName,email);
-        Resusables.enterText(password,Password);
+        Resusables.enterText(userName,email,"UserName Field");
+        Resusables.enterText(password,Password,"Password Field");
         Resusables.click(loginButton);
     }
 }

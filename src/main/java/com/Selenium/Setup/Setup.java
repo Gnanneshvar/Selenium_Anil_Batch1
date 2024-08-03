@@ -11,6 +11,7 @@ public class Setup {
 
     public static WebDriver driver;
     public static String browser="";
+
     public static void launchBrowser(String url) {
         switch (browser.toLowerCase()) {
             case "chrome":
