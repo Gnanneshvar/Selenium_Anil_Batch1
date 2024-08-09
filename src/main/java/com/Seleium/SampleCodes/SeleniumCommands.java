@@ -13,6 +13,7 @@ public class SeleniumCommands {
         // WebDriver driver1 = new FirefoxDriver();
         driver.manage().window().maximize();
         driver.get("https://www.facebook.com/login/?next=https%3A%2F%2Fwww.facebook.com%2F");
+
         //navigation
 //        driver.navigate().to("https://www.facebook.com/login/?next=https%3A%2F%2Fwww.facebook.com%2F");
 
