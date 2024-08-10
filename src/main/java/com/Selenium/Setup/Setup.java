@@ -1,16 +1,39 @@
 package com.Selenium.Setup;
 
+import com.Selenium.BusinessReusables.BusinessReuse;
+import com.Selenium.POM.LoginPage_PageFactory;
+import com.Selenium.POM.SignUp;
+import com.Selenium.POM.TElectoralRolls;
+import com.Selenium.POM.THomePage;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.ie.InternetExplorerDriver;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.safari.SafariDriver;
+import org.openqa.selenium.support.ui.Select;
+
+import java.util.Iterator;
+import java.util.Set;
 
 public class Setup {
 
     public static WebDriver driver;
     public static String browser="";
+    public static Select select;
+    public static Actions actions;
+    public static WebElement web;
+    public static String parentWindow;
+    public static String childWindow;
+    public static Set<String> multipleWindows;
+    public static Iterator<String> windowIterator;
+    public LoginPage_PageFactory loginPage;
+    public SignUp signUp;
+    public TElectoralRolls telectoralRolls;
+    public THomePage thomePage;
+    public static BusinessReuse businessReuse;
 
     public static void launchBrowser(String url) {
         switch (browser.toLowerCase()) {
