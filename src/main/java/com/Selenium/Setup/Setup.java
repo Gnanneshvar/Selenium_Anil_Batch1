@@ -1,10 +1,7 @@
 package com.Selenium.Setup;
 
 import com.Selenium.BusinessReusables.BusinessReuse;
-import com.Selenium.POM.LoginPage_PageFactory;
-import com.Selenium.POM.SignUp;
-import com.Selenium.POM.TElectoralRolls;
-import com.Selenium.POM.THomePage;
+import com.Selenium.POM.*;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -16,6 +13,7 @@ import org.openqa.selenium.safari.SafariDriver;
 import org.openqa.selenium.support.ui.Select;
 
 import java.util.Iterator;
+import java.util.List;
 import java.util.Set;
 
 public class Setup {
@@ -29,11 +27,19 @@ public class Setup {
     public static String childWindow;
     public static Set<String> multipleWindows;
     public static Iterator<String> windowIterator;
+    public static Iterator<WebElement> webElementIterator;
     public LoginPage_PageFactory loginPage;
     public SignUp signUp;
+    public static List<WebElement> webElementList;
+    public static String temp;
+
+    public static BusinessReuse businessReuse;
+
+
+
     public TElectoralRolls telectoralRolls;
     public THomePage thomePage;
-    public static BusinessReuse businessReuse;
+    public EReg_Assembly_ClaimsObjections eReg_Assembly_ClaimsObjections;
 
     public static void launchBrowser(String url) {
         switch (browser.toLowerCase()) {

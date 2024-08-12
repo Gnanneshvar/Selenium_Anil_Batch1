@@ -7,6 +7,8 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.Select;
 
+import java.util.List;
+
 public class Resusables extends Setup {
 
     /**
@@ -162,6 +164,54 @@ public class Resusables extends Setup {
 
     public static void switchToMainWindow() {
         driver.switchTo().window(parentWindow);
+    }
+
+    public static boolean fnValidateStringInTable(WebElement webElement,String validate)
+    {
+        boolean status = false;
+        List<WebElement> rowList = webElement.findElements(By.tagName("tr"));
+        List<WebElement> colmList;
+        for(WebElement rowWebElement:rowList)
+        {
+            colmList = rowWebElement.findElements(By.tagName("td"));
+            webElementIterator = colmList.iterator();
+            while(webElementIterator.hasNext())
+            {
+                web = webElementIterator.next();
+                try {
+                    if (web.getText().equals(validate)) {
+                        status = true;
+                        break;
+                    }
+                }
+                catch(Exception e)
+                {
+
+                }
+            }
+            if(status)
+                break;
+        }
+        return status;
+    }
+
+
+    public static boolean fnValidateStringInTableWithFixedColumn(WebElement webElement,String validate,int column)
+    {
+        boolean status = false;
+        int value=0;
+        List<WebElement> rowList = webElement.findElements(By.tagName("tr"));
+        String xpath = "//table[@id='ctl00_ContentPlaceHolder1_GridView3']//tr["+value+"]//td["+column+"]";
+        for(int i = 0;i<rowList.size();i++)
+        {
+            value = i;
+            if(getWebElement(By.xpath(xpath)).getText().equals(validate))
+            {
+                status = true;
+                break;
+            }
+        }
+        return status;
     }
 
 }
