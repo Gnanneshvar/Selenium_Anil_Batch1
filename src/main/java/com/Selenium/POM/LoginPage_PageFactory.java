@@ -1,6 +1,6 @@
 package com.Selenium.POM;
 
-import com.Selenium.Setup.Resusables;
+import com.Selenium.Setup.Reuseables;
 import com.Selenium.Setup.Setup;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -24,8 +24,8 @@ public class LoginPage_PageFactory extends Setup {
     }
 
     public void fnLogin(String email, String Password) {
-        Resusables.enterText(userName,email,"UserName Field");
-        Resusables.enterText(password,Password,"Password Field");
-        Resusables.click(loginButton);
+        Reuseables.enterText(userName,email,"UserName Field");
+        Reuseables.enterText(password,Password,"Password Field");
+        Reuseables.click(loginButton);
     }
 }

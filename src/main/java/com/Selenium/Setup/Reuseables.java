@@ -1,20 +1,17 @@
 package com.Selenium.Setup;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.NoSuchElementException;
-import org.openqa.selenium.StaleElementReferenceException;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.Select;
 
 import java.util.List;
 
-public class Resusables extends Setup {
+public class Reuseables extends Setup {
 
     /**
      *
      */
-    private Resusables()
+    private Reuseables()
     {
 
     }
@@ -212,6 +209,28 @@ public class Resusables extends Setup {
             }
         }
         return status;
+    }
+
+    public static void alertAccept()
+    {
+        try {
+            driver.switchTo().alert().accept();
+        }
+        catch(NoAlertPresentException e)
+        {
+            System.out.println("Alert is not prompeted::"+e.getMessage());
+        }
+    }
+
+    public static void alertDismiss()
+    {
+        try {
+            driver.switchTo().alert().dismiss();
+        }
+        catch(NoAlertPresentException e)
+        {
+            System.out.println("Alert is not prompeted::"+e.getMessage());
+        }
     }
 
 }

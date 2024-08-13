@@ -1,6 +1,6 @@
 package com.Selenium.POM;
 
-import com.Selenium.Setup.Resusables;
+import com.Selenium.Setup.Reuseables;
 import com.Selenium.Setup.Setup;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
@@ -35,12 +35,12 @@ public class LoginPage extends Setup {
     public static void fnLogin(String username, String Password) {
 //        Resusables.type(userName,username);
 //        Resusables.type(password,Password);
-        WebElement user = Resusables.getWebElement(userName);
-        WebElement pass = Resusables.getWebElement(password);
-        WebElement sign = Resusables.getWebElement(loginButton);
-        Resusables.enterText(Resusables.getWebElement(userName),username,"UserName");
-        Resusables.enterText(Resusables.getWebElement(password),Password,"Password Field");
-        Resusables.click(Resusables.getWebElement(loginButton));
+        WebElement user = Reuseables.getWebElement(userName);
+        WebElement pass = Reuseables.getWebElement(password);
+        WebElement sign = Reuseables.getWebElement(loginButton);
+        Reuseables.enterText(Reuseables.getWebElement(userName),username,"UserName");
+        Reuseables.enterText(Reuseables.getWebElement(password),Password,"Password Field");
+        Reuseables.click(Reuseables.getWebElement(loginButton));
 //        Resusables.getWebElement(userName).sendKeys(username);
 //        Resusables.getWebElement(password).sendKeys(Password);
 //        Resusables.getWebElement(loginButton).click();

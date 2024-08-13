@@ -1,5 +1,5 @@
 import com.Selenium.BusinessReusables.BusinessReuse;
-import com.Selenium.Setup.Resusables;
+import com.Selenium.Setup.Reuseables;
 import com.Selenium.Setup.Setup;
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
@@ -10,7 +10,7 @@ public class SearchElectoralRolls extends Setup {
         launchBrowser("https://ceotelangana.nic.in/");
         businessReuse = new BusinessReuse();
         businessReuse.fnNavigateToElectoralPage();
-        Resusables.switchToNewWindow();
+        Reuseables.switchToNewWindow();
         Thread.sleep(3000);
         businessReuse.fnSearchElectoralRolls("6-Kamareddy","13-Jukkal(SC)","Mandal Parishad Primary School Sonala");
         try {

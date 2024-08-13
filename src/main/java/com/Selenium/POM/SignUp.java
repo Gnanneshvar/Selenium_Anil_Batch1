@@ -1,6 +1,5 @@
 package com.Selenium.POM;
 
-import com.Selenium.Setup.Resusables;
 import com.Selenium.Setup.Setup;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
