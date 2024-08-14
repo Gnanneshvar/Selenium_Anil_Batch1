@@ -11,7 +11,9 @@ import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.safari.SafariDriver;
 import org.openqa.selenium.support.ui.Select;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
+import java.time.Duration;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
@@ -32,10 +34,9 @@ public class Setup {
     public SignUp signUp;
     public static List<WebElement> webElementList;
     public static String temp;
+    public static WebDriverWait wait;
 
     public static BusinessReuse businessReuse;
-
-
 
     public TElectoralRolls telectoralRolls;
     public THomePage thomePage;
@@ -60,21 +61,8 @@ public class Setup {
         }
         driver.get(url);
         driver.manage().window().maximize();
-        //driver.quit();
-        // Locators in selenium
-        // id
-        // name
-        // classname
-        // css
-        // linktext
-        // partiallinktext
-        // tagname
-        // xpath
-
-        // WebdriverMananger (3d party API)
-        // Selenium Manager
-        // 4.0.0
-        // 4.10.0
-        // driver is an object which holdes the reference type as Webdriver interface and object type as ChromeDriver class
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(7));
+        driver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(15));
+        wait = new WebDriverWait(driver, Duration.ofSeconds(10));
     }
 }

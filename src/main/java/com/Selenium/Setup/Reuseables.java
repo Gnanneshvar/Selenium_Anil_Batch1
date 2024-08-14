@@ -2,14 +2,14 @@ package com.Selenium.Setup;
 
 import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
-
 import java.util.List;
 
 public class Reuseables extends Setup {
 
     /**
-     *
+     * This is a private Costructor making not to create an object for this class
      */
     private Reuseables()
     {
@@ -31,7 +31,16 @@ public class Reuseables extends Setup {
      */
     public static WebElement getWebElement(By byVariable)
     {
-        return driver.findElement(byVariable);
+        try
+        {
+            web = driver.findElement(byVariable);
+            wait.until(ExpectedConditions.visibilityOf(web));
+        }
+        catch(NoSuchElementException e)
+        {
+            System.out.println("Element is not found");
+        }
+        return web;
     }
 
     /**
@@ -42,6 +51,7 @@ public class Reuseables extends Setup {
     public static void enterText(WebElement webElement,String textToEnter,String webElementName)
     {
         try {
+            wait.until(ExpectedConditions.visibilityOf(webElement));
             if (webElement.isDisplayed()){
                 if (webElement.isEnabled()){
                     webElement.click();
@@ -61,6 +71,7 @@ public class Reuseables extends Setup {
 
     public static void click(WebElement element) {
         try {
+            wait.until(ExpectedConditions.elementToBeClickable(element));
             if (element.isDisplayed()){
                 if (element.isEnabled()){
                     element.click();
@@ -77,6 +88,7 @@ public class Reuseables extends Setup {
 
     public static void selectByVisibleText(WebElement element, String selectValue) {
         try {
+            wait.until(ExpectedConditions.elementToBeSelected(element));
             if(element.isDisplayed())
             {
                 if(element.isEnabled())
@@ -97,6 +109,7 @@ public class Reuseables extends Setup {
 
     public static void selectByValue(WebElement element, String selectValue) {
         try {
+            wait.until(ExpectedConditions.elementToBeSelected(element));
             if(element.isDisplayed())
             {
                 if(element.isEnabled())
@@ -117,6 +130,7 @@ public class Reuseables extends Setup {
 
     public static void selectByValue(WebElement element, int index) {
         try {
+            wait.until(ExpectedConditions.elementToBeSelected(element));
             if(element.isDisplayed())
             {
                 if(element.isEnabled())
@@ -137,7 +151,17 @@ public class Reuseables extends Setup {
 
     public static void mouseOverMouseOverAndClick(WebElement mouseOver1, WebElement mouseOver2, WebElement toClick) {
         actions = new Actions(driver);
-        actions.moveToElement(mouseOver1).moveToElement(mouseOver2).moveToElement(toClick).click().build().perform();
+        try
+        {
+            wait.until(ExpectedConditions.elementToBeClickable(mouseOver1));
+            actions.moveToElement(mouseOver1).moveToElement(mouseOver2).moveToElement(toClick).click().build().perform();
+        }
+        catch(Exception e)
+        {
+            System.out.println("Could not able to perform mouse over");
+        }
+
+
     }
 
     /**
@@ -214,6 +238,7 @@ public class Reuseables extends Setup {
     public static void alertAccept()
     {
         try {
+            wait.until(ExpectedConditions.alertIsPresent());
             driver.switchTo().alert().accept();
         }
         catch(NoAlertPresentException e)
@@ -225,6 +250,7 @@ public class Reuseables extends Setup {
     public static void alertDismiss()
     {
         try {
+            wait.until(ExpectedConditions.alertIsPresent());
             driver.switchTo().alert().dismiss();
         }
         catch(NoAlertPresentException e)
