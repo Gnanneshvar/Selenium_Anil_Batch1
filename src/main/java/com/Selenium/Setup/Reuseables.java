@@ -1,5 +1,6 @@
 package com.Selenium.Setup;
 
+import com.aventstack.extentreports.Status;
 import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -86,20 +87,22 @@ public class Reuseables extends Setup {
         }
     }
 
-    public static void selectByVisibleText(WebElement element, String selectValue) {
+    public static void selectByVisibleText(WebElement element, String webElementName,String selectValue) {
         try {
-            wait.until(ExpectedConditions.elementToBeSelected(element));
+            wait.until(ExpectedConditions.visibilityOf(element));
             if(element.isDisplayed())
             {
                 if(element.isEnabled())
                 {
                     select = new Select(element);
                     select.selectByVisibleText(selectValue);
+                    test.log(Status.INFO,"Selected value for "+webElementName+" as::"+selectValue);
                 }
             }
         }
         catch(NoSuchElementException e) {
-            System.out.println("No such Element Exception");
+            test.log(Status.FAIL,"Not able to Select value for "+webElementName+" as::"+selectValue +"Error as::"+e.getMessage());
+            //System.out.println("No such Element Exception");
         }
         catch(StaleElementReferenceException s)
         {
@@ -109,7 +112,7 @@ public class Reuseables extends Setup {
 
     public static void selectByValue(WebElement element, String selectValue) {
         try {
-            wait.until(ExpectedConditions.elementToBeSelected(element));
+            wait.until(ExpectedConditions.visibilityOf(element));
             if(element.isDisplayed())
             {
                 if(element.isEnabled())
@@ -130,7 +133,7 @@ public class Reuseables extends Setup {
 
     public static void selectByValue(WebElement element, int index) {
         try {
-            wait.until(ExpectedConditions.elementToBeSelected(element));
+            wait.until(ExpectedConditions.visibilityOf(element));
             if(element.isDisplayed())
             {
                 if(element.isEnabled())

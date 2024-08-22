@@ -25,8 +25,8 @@ public class BusinessReuse extends Setup {
     }
 
     public void fnSearchElectoralRolls(String districtNam,String assemblyConstituency,String textToValidate) {
-        Reuseables.selectByVisibleText(telectoralRolls.distName,districtNam);
-        Reuseables.selectByVisibleText(telectoralRolls.assembly,assemblyConstituency);
+        Reuseables.selectByVisibleText(telectoralRolls.distName,"District Name",districtNam);
+        Reuseables.selectByVisibleText(telectoralRolls.assembly,"Assembly Constituencey",assemblyConstituency);
         Reuseables.click(telectoralRolls.poolingStatus);
         if(Reuseables.fnValidateStringInTable(telectoralRolls.webPoolingTable,textToValidate))
         {
@@ -38,9 +38,9 @@ public class BusinessReuse extends Setup {
     }
 
     public void fnClaimsAndObjections(String districtName,String assemblyConstituency,String formType) {
-        Reuseables.selectByVisibleText(eReg_Assembly_ClaimsObjections.webSel_districtName,districtName);
-        Reuseables.selectByVisibleText(eReg_Assembly_ClaimsObjections.webSel_assemblyConstituency,assemblyConstituency);
-        Reuseables.selectByVisibleText(eReg_Assembly_ClaimsObjections.webSel_FormType,formType);
+        Reuseables.selectByVisibleText(eReg_Assembly_ClaimsObjections.webSel_districtName,"District Name",districtName);
+        Reuseables.selectByVisibleText(eReg_Assembly_ClaimsObjections.webSel_assemblyConstituency,"Assembly Constituency",assemblyConstituency);
+        Reuseables.selectByVisibleText(eReg_Assembly_ClaimsObjections.webSel_FormType,"Form type",formType);
     }
 
     public void fnCreateNewRecord(String fName,String lName,String emailAddress,String age,String salary,String department)
