@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Testing">
+    <test preserve-order="true" name="AbilityToCancelConfirmedRoutes_QAA_339">
+        <classes>
+            <class name="RouteWorkBench.AbilityToCancelConfirmedRoutes_QAA_339"/>
+        </classes>
+    </test>
+</suite>
