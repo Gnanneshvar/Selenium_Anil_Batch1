@@ -4,8 +4,12 @@ import com.Selenium.BusinessReusables.BusinessReuse;
 import com.Selenium.POM.*;
 import com.aventstack.extentreports.ExtentReports;
 import com.aventstack.extentreports.ExtentTest;
+import com.aventstack.extentreports.Status;
 import com.aventstack.extentreports.reporter.ExtentSparkReporter;
 import com.aventstack.extentreports.reporter.configuration.Theme;
+import com.codoid.products.fillo.Connection;
+import com.codoid.products.fillo.Fillo;
+import com.codoid.products.fillo.Recordset;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -16,17 +20,19 @@ import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.safari.SafariDriver;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import org.testng.annotations.AfterClass;
-import org.testng.annotations.AfterSuite;
-import org.testng.annotations.BeforeClass;
-import org.testng.annotations.BeforeSuite;
+import org.testng.Assert;
+import org.testng.ITestResult;
+import org.testng.annotations.*;
 
+import java.io.File;
 import java.io.IOException;
 import java.sql.Timestamp;
 import java.time.Duration;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Properties;
 import java.util.Set;
+import java.io.FileReader;
 
 public class Setup {
 
@@ -56,13 +62,23 @@ public class Setup {
     public static ExtentReports extent;
     public static ExtentTest test;
     public static String reportFileName;
-
+    public static String screenshotPath;
+    public static File JsonReader;
+    public static String path = System.getProperty("user.dir");
+    public static final String UTILS_FILE_PATH = path + "/Config.properties";
+    public static Properties props = new Properties();
+    public static String strQuery;
+    public static String getdetails=null;
+    public static Fillo fillo;
+    public static Connection connection;
+    public static Recordset recordset;
+    public static FileReader reader;
 
     @BeforeSuite(alwaysRun = true)
     public static void reporting() throws IOException
     {
-        // FileReader reader=new FileReader(UTILS_FILE_PATH);
-        //props.load(reader);
+        reader=new FileReader(UTILS_FILE_PATH);
+        props.load(reader);
         Timestamp timestamp = new Timestamp(System.currentTimeMillis());
         extent = new ExtentReports();
         reportFileName = System.getProperty("user.dir")+"/Extent_Reporting/"+timestamp.getTime()+".html";
@@ -74,25 +90,25 @@ public class Setup {
         extent.setSystemInfo("HostName", "Local Host");
         extent.setSystemInfo("Os", "Windows");
         extent.setSystemInfo("Testing Company", "Selenium with Java");
-        //extent.setSystemInfo("Browser", props.getProperty("Browser"));
-        //extent.setSystemInfo("Execution Environment", props.getProperty("Environment"));
+        extent.setSystemInfo("Browser", props.getProperty("Browser"));
+        extent.setSystemInfo("Execution Environment", props.getProperty("Environment"));
     }
 
-    @AfterSuite(alwaysRun = true)
+ //  @AfterSuite(alwaysRun = true)
     public static void closeReport()
     {
         extent.flush();
     }
 
-    @BeforeClass(alwaysRun = true)
+ //  @BeforeClass(alwaysRun = true)
     public void preCondition()
     {
         browser = "chrome";
-        launchBrowser(url);
+        launchBrowser(props.getProperty("url"));
         businessReuse = new BusinessReuse();
     }
 
-    @AfterClass
+   //@AfterClass
     public void endSession()
     {
         driver.quit();
@@ -120,5 +136,16 @@ public class Setup {
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(7));
         driver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(15));
         wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+    }
+
+ //   @AfterMethod(alwaysRun=true)
+    public void ReportIT(ITestResult result) throws IOException
+    {
+        if(result.getStatus()==ITestResult.FAILURE)
+        {
+            screenshotPath = Reuseables.getScreenshot(driver,result.getName());
+            test.log(Status.FAIL, "Screen shot as below"+test.addScreenCaptureFromPath(screenshotPath));
+            Assert.assertEquals(true,false);
+        }
     }
 }

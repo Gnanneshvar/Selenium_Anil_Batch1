@@ -1,10 +1,16 @@
 package com.Selenium.Setup;
 
 import com.aventstack.extentreports.Status;
+import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
+
+import java.io.File;
+import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 public class Reuseables extends Setup {
@@ -261,5 +267,25 @@ public class Reuseables extends Setup {
             System.out.println("Alert is not prompeted::"+e.getMessage());
         }
     }
+
+    /**
+     * The method is to take the screenshot
+     * @param driver
+     * @param ScreenshotName
+     * @return
+     * @throws IOException
+     */
+    public static String getScreenshot(WebDriver driver,String ScreenshotName) throws IOException
+    {
+        String dateName = new SimpleDateFormat("yyyyMMddhhmmss").format(new Date());
+        TakesScreenshot ts = (TakesScreenshot)driver;
+        File source = ts.getScreenshotAs(OutputType.FILE);
+        String destination = System.getProperty("user.dir")+"/FailedScreenshots/"+ScreenshotName+dateName+".png";
+        File finalDestination = new File(destination);
+        FileUtils.copyFile(source,finalDestination);
+        System.out.println("Destination File of Screenshot::"+destination);
+        return destination;
+    }
+
 
 }
