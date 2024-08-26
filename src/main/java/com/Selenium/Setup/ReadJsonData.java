@@ -1,5 +1,7 @@
 package com.Selenium.Setup;
 
+import com.jayway.jsonpath.JsonPath;
+
 import java.io.File;
 import java.io.IOException;
 
@@ -13,16 +15,16 @@ public class ReadJsonData extends Setup{
      * @throws IOException
      */
 
-//    public static String get(String Key) throws IOException {
-//        String value = "";
-//        try {
-//            value = JsonPath.read(JsonReader, "$." + Key);
-//        } catch (Exception e) {
-//            // TODO Auto-generated catch block
-//            e.printStackTrace();
-//        }
-//        return value;
-//    }
+    public static String get(String Key) throws IOException {
+        String value = "";
+        try {
+            value = JsonPath.read(JsonReader, "$." + Key);
+        } catch (Exception e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+        return value;
+    }
 
     /**
      * This method would read the Json file and store it in Reader variable

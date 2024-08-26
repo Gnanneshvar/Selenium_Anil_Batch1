@@ -1,0 +1,24 @@
+{
+  "distictName": "6-Kamareddy",
+  "assemblyConstituencety": "15-Yellareddy",
+  "formType": "Form11B",
+  "PersonalInfo": {
+    "Name": "GK",
+    "Role": "Tester",
+    "Address": {
+      "City": "Chittoor",
+      "State": "Andrapradesh"
+    }
+  },
+  "ERegistration":
+  {
+    "AssemblyConstituency": {
+      "ClaimsAndObjectives":
+      {
+        "DistrictName": "6-Kamareddy",
+        "assemblyConstituencety": "15-Yellareddy",
+        "formType": "Form11B"
+      }
+    }
+  }
+}

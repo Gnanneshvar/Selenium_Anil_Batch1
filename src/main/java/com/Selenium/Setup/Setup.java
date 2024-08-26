@@ -94,13 +94,13 @@ public class Setup {
         extent.setSystemInfo("Execution Environment", props.getProperty("Environment"));
     }
 
- //  @AfterSuite(alwaysRun = true)
+   @AfterSuite(alwaysRun = true)
     public static void closeReport()
     {
         extent.flush();
     }
 
- //  @BeforeClass(alwaysRun = true)
+   @BeforeClass(alwaysRun = true)
     public void preCondition()
     {
         browser = "chrome";
@@ -108,7 +108,7 @@ public class Setup {
         businessReuse = new BusinessReuse();
     }
 
-   //@AfterClass
+   @AfterClass
     public void endSession()
     {
         driver.quit();
